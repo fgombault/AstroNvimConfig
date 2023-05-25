@@ -32,7 +32,7 @@ local config = {
           { name = "luasnip",  priority = 750 },
           { name = "buffer",   priority = 500 },
           { name = "path",     priority = 250 },
-          { name = "codeium",  priority = 800 }, -- add new source
+          { name = "codeium",  priority = 800, max_item_count = 3 }, -- add new source
         }
         opts.experimental = {
           ghost_text = true
