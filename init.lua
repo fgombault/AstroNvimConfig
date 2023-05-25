@@ -54,10 +54,15 @@ local config = {
     { 'dag/vim-fish',                ft = { 'fish' } },
     { 'alaviss/nim.nvim',            ft = { 'nim' } },        -- TODO: maybe remove if LSP
     { 'AndrewRadev/inline_edit.vim', event = "BufReadPost" }, -- InlineEdit command
+    {
+      "folke/todo-comments.nvim",                             -- highlight todos and move through them
+      event = "BufReadPost",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      opts = {},
+    },
     -- other plugins to consider
     -- emmet-vim, for expanding abbreviations (essential for web dev?)
     -- fast travel (trailblazer? litee-bookmarks?)
-    -- https://github.com/folke/todo-comments.nvim and friends
   },
 }
 -- cmd+S can save, this needs a terminal (kitty) config to send ctrl-s
