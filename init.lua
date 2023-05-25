@@ -45,7 +45,7 @@ local config = {
       "loctvl842/monokai-pro.nvim",
       name = "monokai-pro",
       config = function()
-        require("monokai-pro").setup({ filter = "spectrum" })
+        require("monokai-pro").setup({ transparent_background = true, filter = "spectrum" })
       end,
     },
     { 'tpope/vim-sleuth',            event = "BufReadPost" }, -- detect indentation style
