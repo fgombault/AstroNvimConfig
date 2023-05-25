@@ -1,6 +1,6 @@
 -- see: https://github.com/hunger/AstroVim/blob/my_config/lua/user/init.lua
 local config = {
-  colorscheme = 'koehler',
+  colorscheme = 'monokai-pro',
   options = {
     opt = {
       clipboard = 'unnamedplus', -- use the system clipboard
@@ -39,6 +39,13 @@ local config = {
         }
         -- return the new table to be used
         return opts
+      end,
+    },
+    {
+      "loctvl842/monokai-pro.nvim",
+      name = "monokai-pro",
+      config = function()
+        require("monokai-pro").setup({ filter = "spectrum" })
       end,
     },
     { 'tpope/vim-sleuth',            event = "BufReadPost" }, -- detect indentation style
