@@ -8,10 +8,39 @@ local config = {
     },
   },
   plugins = {
-    { 'Exafunction/codeium.vim',     event = "BufReadPost" }, -- FIX: tab conflict with cmp
-    -- https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
-    -- https://github.com/Exafunction/codeium.vim#-installation-options
-    -- cmp-ai would be best? https://github.com/tzachar/cmp-ai/blob/main/lua/cmp_ai/backends/bard.lua
+    {
+      'jcdickinson/codeium.nvim', -- using this plugin for compatibility with cmp
+      event = "BufReadPost",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp" },
+      config = function()
+        require("codeium").setup({})
+      end
+    },
+    {
+      -- add codeium source to cmp
+      "hrsh7th/nvim-cmp",
+      -- override the options table that is used in the `require("cmp").setup()` call
+      opts = function(_, opts)
+        -- opts parameter is the default options table
+        -- the function is lazy loaded so cmp is able to be required
+        local cmp = require "cmp"
+        -- modify the sources part of the options table
+        opts.sources = cmp.config.sources {
+          { name = "nvim_lsp", priority = 1000 },
+          { name = "luasnip",  priority = 750 },
+          { name = "buffer",   priority = 500 },
+          { name = "path",     priority = 250 },
+          { name = "codeium",  priority = 800 }, -- add new source
+        }
+        opts.experimental = {
+          ghost_text = true
+        }
+        -- return the new table to be used
+        return opts
+      end,
+    },
     { 'tpope/vim-sleuth',            event = "BufReadPost" }, -- detect indentation style
     { 'roxma/vim-paste-easy',        event = "BufReadPost" }, -- paste without indent
     { 'mechatroner/rainbow_csv',     ft = { 'csv' } },
