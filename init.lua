@@ -43,9 +43,28 @@ local config = {
       dependencies = { "nvim-lua/plenary.nvim" },             -- this also requires "brew install ripgrep"
       opts = {},
     },
+    {
+      "folke/trouble.nvim",
+      event = "BufReadPost",
+      cmd = { "TroubleToggle", "Trouble" },
+      keys = {
+        { "<leader>x",        desc = "Trouble" },
+        { "<leader>x" .. "t", "<cmd>TodoTrouble<cr>",                         desc = "Document TODO comments" },
+        { "<leader>x" .. "X", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
+        { "<leader>x" .. "x", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
+        { "<leader>x" .. "l", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
+        { "<leader>x" .. "q", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
+      },
+      opts = {
+        use_diagnostic_signs = true,
+        action_keys = {
+          close = { "q", "<esc>" },
+          cancel = "<c-e>",
+        },
+      },
+    },
     -- other plugins to consider
     -- emmet-vim, for expanding abbreviations (essential for web dev?)
-    -- fast travel (trailblazer? litee-bookmarks?)
   },
 
   polish = function()
