@@ -8,9 +8,23 @@ local config = {
     },
   },
   plugins = {
-    { 'Exafunction/codeium.vim',     event = "BufReadPost" }, -- FIX: tab conflict with cmp
-    -- https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
-    -- https://github.com/Exafunction/codeium.vim#-installation-options
+    {
+      'Exafunction/codeium.vim',
+      event = "BufReadPost",
+      config = function()
+        vim.keymap.set('i', '<Tab>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+        vim.keymap.set('i', '<S-Tab>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+      end
+    },
+    {
+      -- override nvim-cmp plugin keybindings to avoid conflict with codeium
+      "hrsh7th/nvim-cmp",
+      opts = function(_, opts)
+        opts.mapping["<Tab>"] = nil
+        opts.mapping["<S-Tab>"] = nil
+        return opts
+      end,
+    },
     {
       "loctvl842/monokai-pro.nvim",
       name = "monokai-pro",
