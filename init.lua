@@ -7,6 +7,9 @@ local config = {
       -- colorcolumn = "80,100",
     },
   },
+  diagnostics = {
+    update_in_insert = false, -- this helps see codeium suggestions clearly
+  },
   plugins = {
     {
       'Exafunction/codeium.vim',
