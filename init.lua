@@ -39,17 +39,21 @@ local config = {
     { 'AndrewRadev/inline_edit.vim', event = "BufReadPost" }, -- InlineEdit command
     {
       "folke/todo-comments.nvim",                             -- highlight todos and move through them
-      event = "BufReadPost",
-      dependencies = { "nvim-lua/plenary.nvim" },
+      event = "BufReadPost",                                  -- if too heavy, use https://github.com/folke/paint.nvim
+      dependencies = { "nvim-lua/plenary.nvim" },             -- this also requires "brew install ripgrep"
       opts = {},
     },
     -- other plugins to consider
     -- emmet-vim, for expanding abbreviations (essential for web dev?)
     -- fast travel (trailblazer? litee-bookmarks?)
   },
+
+  polish = function()
+    local map = vim.api.nvim_set_keymap
+    -- cmd+S can save, this needs a terminal (kitty) config to send ctrl-s
+    -- note: normal mode shortcut already exists in vanilla astronvim
+    map("i", "<C-s>", "<Esc>:w!<CR>i", { desc = "Save in insert mode" })
+  end
 }
--- cmd+S can save, this needs a terminal (kitty) config to send ctrl-s
--- https://stackoverflow.com/questions/33060569/mapping-command-s-to-w-in-vim
--- vim.api.nvim_set_keymap("i", "<C-s>", "<Esc>:w<CR>i", {noremap = true})
--- vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", {noremap = true})
+
 return config
