@@ -1,6 +1,6 @@
 -- see: https://github.com/hunger/AstroVim/blob/my_config/lua/user/init.lua
 local config = {
-  colorscheme = 'monokai-pro',
+  colorscheme = 'dracula',
   options = {
     opt = {
       clipboard = 'unnamedplus', -- use the system clipboard
@@ -26,11 +26,10 @@ local config = {
       end,
     },
     {
-      "loctvl842/monokai-pro.nvim",
-      name = "monokai-pro",
-      config = function()
-        require("monokai-pro").setup({ transparent_background = true, filter = "spectrum" })
-      end,
+      "Mofiqul/dracula.nvim", -- in case of issue, try https://github.com/catppuccin/nvim
+      opts = {
+        transparent_bg = true,
+      },
     },
     { 'tpope/vim-sleuth',            event = "BufReadPost" }, -- detect indentation style
     { 'roxma/vim-paste-easy',        event = "BufReadPost" }, -- paste without indent
