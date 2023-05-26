@@ -38,7 +38,7 @@ local config = {
     { 'roxma/vim-paste-easy',        event = "BufReadPost" }, -- paste without indent
     { 'mechatroner/rainbow_csv',     ft = { 'csv' } },
     { 'dag/vim-fish',                ft = { 'fish' } },
-    { 'alaviss/nim.nvim',            ft = { 'nim' } },        -- TODO: maybe remove if LSP
+    { 'alaviss/nim.nvim',            ft = { 'nim' } },        -- treesitter has no support for nim
     { 'AndrewRadev/inline_edit.vim', event = "BufReadPost" }, -- InlineEdit command
     {
       "folke/todo-comments.nvim",                             -- highlight todos and move through them
