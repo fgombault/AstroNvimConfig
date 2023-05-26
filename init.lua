@@ -12,26 +12,6 @@ local config = {
       'Exafunction/codeium.vim',
       event = "BufReadPost",
       config = function()
-        -- Change '<C-g>' here to any keycode you like.
-        vim.keymap.set('i', '<Tab>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-        vim.keymap.set('i', '<S-Tab>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-      end
-    },
-    {
-      -- override nvim-cmp plugin keybindings to avoid conflict with codeium
-      "hrsh7th/nvim-cmp",
-      opts = function(_, opts)
-        -- opts parameter is the default options table
-        -- modify the mapping part of the table
-        opts.mapping["<Tab>"] = nil
-        opts.mapping["<S-Tab>"] = nil
-        return opts
-      end,
-    },
-    {
-      'Exafunction/codeium.vim',
-      event = "BufReadPost",
-      config = function()
         vim.keymap.set('i', '<Tab>', function() return vim.fn['codeium#Accept']() end, { expr = true })
         vim.keymap.set('i', '<S-Tab>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
       end
