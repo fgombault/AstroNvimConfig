@@ -79,3 +79,9 @@ local config = {
 }
 
 return config
+
+-- TODO: investigate snippet options
+-- TODO: completion options
+-- TODO: linter
+-- TODO: signatures, https://github.com/ray-x/lsp_signature.nvim
+-- TODO: hover ? https://github.com/lewis6991/hover.nvim
