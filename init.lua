@@ -44,7 +44,12 @@ local config = {
       "folke/todo-comments.nvim",                             -- highlight todos and move through them
       event = "BufReadPost",                                  -- if too heavy, use https://github.com/folke/paint.nvim
       dependencies = { "nvim-lua/plenary.nvim" },             -- this also requires "brew install ripgrep"
-      opts = {},
+      opts = {
+        highlight = {
+          throttle = 2000,
+          multiline = false,
+        }
+      },
     },
     {
       "folke/trouble.nvim",
