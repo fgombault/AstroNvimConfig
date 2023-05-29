@@ -41,9 +41,23 @@ local config = {
     { 'alaviss/nim.nvim',            ft = { 'nim' } },        -- treesitter has no support for nim
     { 'AndrewRadev/inline_edit.vim', event = "BufReadPost" }, -- InlineEdit command
     {
-      "folke/todo-comments.nvim",                             -- highlight todos and move through them
-      event = "BufReadPost",                                  -- if too heavy, use https://github.com/folke/paint.nvim
-      dependencies = { "nvim-lua/plenary.nvim" },             -- this also requires "brew install ripgrep"
+      'echasnovski/mini.jump2d',                              -- Jump around with ',' key
+      version = false,
+      event = "BufReadPost",
+      dependencies = { 'echasnovski/mini.nvim' },
+      config = function()
+        require('mini.jump2d').setup({
+          labels = "abcdefghiklmnopqrstuvwxy",
+          mappings = {
+            start_jumping = ',',
+          },
+        })
+      end
+    },
+    {
+      "folke/todo-comments.nvim",                 -- highlight todos and move through them
+      event = "BufReadPost",                      -- if too heavy, use https://github.com/folke/paint.nvim
+      dependencies = { "nvim-lua/plenary.nvim" }, -- this also requires "brew install ripgrep"
       opts = {
         highlight = {
           throttle = 2000,
@@ -90,3 +104,4 @@ return config
 -- TODO: linter
 -- TODO: signatures, https://github.com/ray-x/lsp_signature.nvim
 -- TODO: hover ? https://github.com/lewis6991/hover.nvim
+-- TODO: https://github.com/nvim-neotest/neotest
