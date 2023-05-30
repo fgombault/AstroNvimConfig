@@ -15,18 +15,9 @@ local config = {
       'Exafunction/codeium.vim',
       event = "BufReadPost",
       config = function()
-        vim.keymap.set('i', '<Tab>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-        vim.keymap.set('i', '<S-Tab>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+        vim.keymap.set('i', '<Right>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+        vim.keymap.set('i', '<S-Right>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
       end
-    },
-    {
-      -- override nvim-cmp plugin keybindings to avoid conflict with codeium
-      "hrsh7th/nvim-cmp",
-      opts = function(_, opts)
-        opts.mapping["<Tab>"] = nil -- TODO: superTab config for codeium and LuaSnip https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
-        opts.mapping["<S-Tab>"] = nil
-        return opts
-      end,
     },
     {
       "Mofiqul/dracula.nvim", -- in case of issue, try https://github.com/catppuccin/nvim
