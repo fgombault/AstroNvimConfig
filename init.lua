@@ -17,6 +17,7 @@ local config = {
       config = function()
         vim.keymap.set('i', '<Right>', function() return vim.fn['codeium#Accept']() end, { expr = true })
         vim.keymap.set('i', '<S-Right>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+        vim.g.codeium_tab_fallback = '<Right>' -- our key is right, so move right (and don't insert a tab)
       end
     },
     {
