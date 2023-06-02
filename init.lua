@@ -77,6 +77,10 @@ local config = {
         },
       },
     },
+    {
+      "romainl/vim-cool", -- prevent stale search highlightig
+      event = "User AstroFile",
+    }
     -- other plugins to consider
     -- emmet-vim, for expanding abbreviations (essential for web dev?)
   },
