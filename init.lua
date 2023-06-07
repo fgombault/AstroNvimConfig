@@ -4,7 +4,7 @@ local config = {
   options = {
     opt = {
       clipboard = 'unnamedplus', -- use the system clipboard
-      -- colorcolumn = "80,100",
+      colorcolumn = "80,100",
     },
   },
   diagnostics = {
@@ -15,25 +15,62 @@ local config = {
       'Exafunction/codeium.vim',
       event = "BufReadPost",
       config = function()
-        vim.keymap.set('i', '<S-Right>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-        vim.keymap.set('i', '<c-Right>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-        vim.g.codeium_tab_fallback = '' -- our key is right, so move right (and don't insert a tab)
+        vim.keymap.set('i', '<S-Right>', function()
+            return vim.fn['codeium#Accept']()
+          end,
+          { expr = true })
+        vim.keymap.set('i', '<c-Right>', function()
+            return vim.fn['codeium#CycleCompletions'](1)
+          end,
+          { expr = true })
+        vim.g.codeium_tab_fallback = '' -- don't insert a tab
+        vim.g.codeium_idle_delay = 1000 -- avoid frantic suggestions
       end
     },
     {
-      "Mofiqul/dracula.nvim", -- in case of issue, try https://github.com/catppuccin/nvim
+      "Mofiqul/dracula.nvim", -- in case of issue, try catppuccin
       opts = {
         transparent_bg = true,
       },
     },
-    { 'tpope/vim-sleuth',            event = "BufReadPost" }, -- detect indentation style
-    { 'roxma/vim-paste-easy',        event = "BufReadPost" }, -- paste without indent
-    { 'mechatroner/rainbow_csv',     ft = { 'csv' } },
-    { 'dag/vim-fish',                ft = { 'fish' } },
-    { 'alaviss/nim.nvim',            ft = { 'nim' } },        -- treesitter has no support for nim
-    { 'AndrewRadev/inline_edit.vim', event = "BufReadPost" }, -- InlineEdit command
     {
-      'echasnovski/mini.jump2d',                              -- Jump around with ',' key
+      'tpope/vim-sleuth', -- detect indentation style
+      event = "BufReadPost"
+    },
+    {
+      'roxma/vim-paste-easy', -- paste without indent
+      event = "BufReadPost"
+    },
+    {
+      'mechatroner/rainbow_csv',
+      ft = { 'csv' }
+    },
+    {
+      'dag/vim-fish', -- highlighting for fish
+      ft = { 'fish' }
+    },
+    {
+      'alaviss/nim.nvim', -- highlighting for nim
+      ft = { 'nim' }
+    },
+
+    {
+      'NoahTheDuke/vim-just', -- highlighting for just
+      ft = { 'just' }
+    },
+    {
+      'AndrewRadev/inline_edit.vim', -- InlineEdit command
+      event = "BufReadPost"
+    },
+    {
+      'lukas-reineke/virt-column.nvim', -- discreet color column
+      event = "BufReadPost",
+      config = function()
+        require('virt-column').setup({ char = '.' })
+      end
+    },
+    {
+      'echasnovski/mini.jump2d', -- Jump around with ',' key
       version = false,
       event = "BufReadPost",
       dependencies = { 'echasnovski/mini.nvim' },
@@ -62,12 +99,32 @@ local config = {
       event = "BufReadPost",
       cmd = { "TroubleToggle", "Trouble" },
       keys = {
-        { "<leader>x",        desc = "Trouble" },
-        { "<leader>i",        "<cmd>TodoTrouble<cr>",                         desc = "Document TODO comments" },
-        { "<leader>x" .. "X", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-        { "<leader>x" .. "x", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
-        { "<leader>x" .. "l", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
-        { "<leader>x" .. "q", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
+        { "<leader>x", desc = "Trouble" },
+        {
+          "<leader>i",
+          "<cmd>TodoTrouble<cr>",
+          desc = "Document TODO comments"
+        },
+        {
+          "<leader>x" .. "X",
+          "<cmd>TroubleToggle workspace_diagnostics<cr>",
+          desc = "Workspace Diagnostics (Trouble)"
+        },
+        {
+          "<leader>x" .. "x",
+          "<cmd>TroubleToggle document_diagnostics<cr>",
+          desc = "Document Diagnostics (Trouble)"
+        },
+        {
+          "<leader>x" .. "l",
+          "<cmd>TroubleToggle loclist<cr>",
+          desc = "Location List (Trouble)"
+        },
+        {
+          "<leader>x" .. "q",
+          "<cmd>TroubleToggle quickfix<cr>",
+          desc = "Quickfix List (Trouble)"
+        },
       },
       opts = {
         use_diagnostic_signs = true,
