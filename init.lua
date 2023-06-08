@@ -204,6 +204,3 @@ local config = {
 }
 
 return config
-
--- TODO: investigate snippet options
--- https://www.youtube.com/playlist?list=PL0EgBggsoPCnZ3a6c0pZuQRMgS_Z8-Fnr
