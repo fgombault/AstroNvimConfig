@@ -177,7 +177,7 @@ local config = {
       },
     },
     {
-      "romainl/vim-cool", -- prevent stale search highlightig
+      "romainl/vim-cool", -- prevent stale search highlighting
       event = "User AstroFile",
     }
     -- other plugins to consider
