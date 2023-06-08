@@ -77,6 +77,10 @@ local config = {
       'beauwilliams/focus.nvim', -- window management and resizing
       event = "BufReadPost",
       opts = { hybridnumber = true },
+      config = function()
+        require('focus').setup({ hybridnumber = true })
+        map("n", "g,", ":FocusSplitCycle<CR>", { desc = "Cycle Focus" })
+      end,
     },
     {
       'levouh/tint.nvim', -- unfocused windows are darker
