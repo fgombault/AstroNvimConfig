@@ -135,6 +135,10 @@ local config = {
       },
     },
     {
+      'kdheepak/lazygit.nvim',
+      event = "BufReadPost",
+    },
+    {
       "romainl/vim-cool", -- prevent stale search highlightig
       event = "User AstroFile",
     }
