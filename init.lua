@@ -70,16 +70,12 @@ local config = {
     {
       'lukas-reineke/virt-column.nvim', -- discreet color column
       event = "BufReadPost",
-      config = function()
-        require('virt-column').setup({ char = '.' })
-      end
+      opts = { char = '.' },
     },
     {
       'beauwilliams/focus.nvim', -- window management and resizing
       event = "BufReadPost",
-      config = function()
-        require("focus").setup({ hybridnumber = true })
-      end
+      opts = { hybridnumber = true },
     },
     {
       'levouh/tint.nvim', -- unfocused windows are darker
@@ -110,14 +106,12 @@ local config = {
       version = false,
       event = "BufReadPost",
       dependencies = { 'echasnovski/mini.nvim' },
-      config = function()
-        require('mini.jump2d').setup({
-          labels = "abcdefghiklmnopqrstuvwxy",
-          mappings = {
-            start_jumping = ',',
-          },
-        })
-      end
+      opts = {
+        labels = "abcdefghiklmnopqrstuvwxy",
+        mappings = {
+          start_jumping = ',',
+        },
+      },
     },
     {
       "folke/todo-comments.nvim",                 -- highlight todos & jump
