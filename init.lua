@@ -29,9 +29,14 @@ local config = {
     },
     {
       "Mofiqul/dracula.nvim", -- in case of issue, try catppuccin
-      opts = {
-        transparent_bg = true,
-      },
+      config = function()
+        local dracula = require("dracula")
+        local c = dracula.colors()
+        c['bg'] = '#1A1A1A' -- the same as my terminal background
+        dracula.setup({
+          colors = c
+        })
+      end,
     },
     {
       'tpope/vim-sleuth', -- detect indentation style
