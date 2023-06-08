@@ -88,19 +88,6 @@ local config = {
         require('tint').setup({
           tint = -65,
           highlight_ignore_patterns = { "WinSeparator", "Status.*" },
-          window_ignore_function = function(winid)
-            local bufid = vim.api.nvim_win_get_buf(winid)
-            local buftype = vim.api.nvim_buf_get_option(bufid, "buftype")
-            local floating = vim.api.nvim_win_get_config(winid).relative ~= ""
-            local badtypes = { "terminal" }
-            local function is_bad(t)
-              for _, type in ipairs(badtypes) do
-                if string.lower(type) == t then return true end
-              end
-            end
-            -- Do not tint floating windows and blacklisted types
-            return floating or is_bad(buftype)
-          end
         })
         -- fix neotree/tint issue not giving colors back to the text buffer
         map('n', '<leader>e', function()
