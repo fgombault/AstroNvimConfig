@@ -137,6 +137,10 @@ local config = {
     {
       'kdheepak/lazygit.nvim',
       event = "BufReadPost",
+      config = function()
+        vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>LazyGit<cr>',
+          { noremap = true, silent = true })
+      end
     },
     {
       "romainl/vim-cool", -- prevent stale search highlightig
