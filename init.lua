@@ -88,7 +88,6 @@ local config = {
             local bufid = vim.api.nvim_win_get_buf(winid)
             local buftype = vim.api.nvim_buf_get_option(bufid, "buftype")
             local floating = vim.api.nvim_win_get_config(winid).relative ~= ""
-            -- local badtypes = { "terminal", "nofile", "nowrite", "quickfix", "prompt" }
             local badtypes = { "terminal" }
             local function is_bad(t)
               for _, type in ipairs(badtypes) do
