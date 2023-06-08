@@ -70,6 +70,15 @@ local config = {
       end
     },
     {
+      'sunjon/shade.nvim',
+      event = "VeryLazy",
+      config = function()
+        require('shade').setup({
+          overlay_opacity = 65,
+        })
+      end
+    },
+    {
       'echasnovski/mini.jump2d', -- Jump around with ',' key
       version = false,
       event = "BufReadPost",
