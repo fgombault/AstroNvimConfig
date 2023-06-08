@@ -75,7 +75,14 @@ local config = {
       end
     },
     {
-      'sunjon/shade.nvim',
+      'beauwilliams/focus.nvim',
+      event = "BufReadPost",
+      config = function()
+        require("focus").setup({ hybridnumber = true })
+      end
+    },
+    {
+      'sunjon/shade.nvim', -- FIXME: levouh/tint can ignore the explorer
       event = "BufReadPost",
       config = function()
         require('shade').setup({
