@@ -186,7 +186,7 @@ local config = {
     require("notify").setup({ background_colour = "#000000" })
 
     -- fix neotree/tint issue not giving colors back to the text buffer
-    vim.keymap.set('n', '<leader>e', function()
+    map('n', '<leader>e', function()
         vim.cmd([[Neotree toggle]])
         local t = require("tint")
         t.toggle()
@@ -194,7 +194,7 @@ local config = {
       end,
       { desc = "Toggle Explorer" })
 
-    vim.keymap.set('n', '<leader>gg', function()
+    map('n', '<leader>gg', function()
         require("astronvim.utils").toggle_term_cmd "lazygit"
       end,
       { desc = "Toggle Lazygit" })
