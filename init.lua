@@ -190,6 +190,7 @@ local config = {
 
     -- fix some colors
     vim.cmd([[hi WinSeparator ctermbg=NONE guibg=NONE guifg=#AA0000]])
+    vim.cmd([[hi CursorLine guibg=#401A11]])
     require("notify").setup({ background_colour = "#000000" })
 
     map('n', '<leader>gg', function()
