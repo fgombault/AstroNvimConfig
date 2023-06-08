@@ -1,4 +1,3 @@
--- see: https://github.com/hunger/AstroVim/blob/my_config/lua/user/init.lua
 local map = vim.keymap.set
 local config = {
   colorscheme = 'dracula',
