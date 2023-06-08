@@ -71,7 +71,7 @@ local config = {
     },
     {
       'sunjon/shade.nvim',
-      event = "VeryLazy",
+      event = "BufReadPost",
       config = function()
         require('shade').setup({
           overlay_opacity = 65,
