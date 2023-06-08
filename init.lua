@@ -82,6 +82,16 @@ local config = {
       end,
     },
     {
+      'ojroques/nvim-bufdel', -- low brain power buffer deletion
+      event = "BufReadPost",
+      config = function()
+        require('bufdel').setup()
+        map("n", "<leader>Q", ":BufDel<CR>", { desc = "Delete Buffer" })
+        map("n", "<leader>q", ":BufDel<CR>:q<CR>",
+          { desc = "Delete Buffer and window" })
+      end,
+    },
+    {
       'levouh/tint.nvim', -- unfocused windows are darker
       event = "BufReadPost",
       config = function()
