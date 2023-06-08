@@ -1,4 +1,5 @@
 -- see: https://github.com/hunger/AstroVim/blob/my_config/lua/user/init.lua
+local map = vim.keymap.set
 local config = {
   colorscheme = 'dracula',
   options = {
@@ -172,7 +173,6 @@ local config = {
   },
 
   polish = function()
-    local map = vim.api.nvim_set_keymap
     -- cmd+S can save, this needs a terminal (kitty) config to send ctrl-s
     -- note: normal mode shortcut already exists in vanilla astronvim
     map("i", "<C-s>", "<Esc>:w!<CR>i", { desc = "Save in insert mode" })
