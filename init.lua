@@ -135,14 +135,6 @@ local config = {
       },
     },
     {
-      'kdheepak/lazygit.nvim',
-      event = "BufReadPost",
-      config = function()
-        vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>LazyGit<cr>',
-          { noremap = true, silent = true })
-      end
-    },
-    {
       "romainl/vim-cool", -- prevent stale search highlightig
       event = "User AstroFile",
     }
@@ -156,6 +148,11 @@ local config = {
     -- note: normal mode shortcut already exists in vanilla astronvim
     map("i", "<C-s>", "<Esc>:w!<CR>i", { desc = "Save in insert mode" })
     require("notify").setup({ background_colour = "#000000" })
+
+    vim.keymap.set('n', '<leader>gg', function()
+        require("astronvim.utils").toggle_term_cmd "lazygit"
+      end,
+      { desc = "Toggle Lazygit" })
   end
 }
 
