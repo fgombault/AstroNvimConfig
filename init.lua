@@ -103,6 +103,14 @@ local config = {
             return floating or is_bad(buftype)
           end
         })
+        -- fix neotree/tint issue not giving colors back to the text buffer
+        map('n', '<leader>e', function()
+            vim.cmd([[Neotree toggle]])
+            local t = require("tint")
+            t.toggle()
+            t.toggle()
+          end,
+          { desc = "Toggle Explorer" })
       end
     },
     {
@@ -184,15 +192,6 @@ local config = {
     -- fix some colors
     vim.cmd([[hi WinSeparator ctermbg=NONE guibg=NONE guifg=#AA0000]])
     require("notify").setup({ background_colour = "#000000" })
-
-    -- fix neotree/tint issue not giving colors back to the text buffer
-    map('n', '<leader>e', function()
-        vim.cmd([[Neotree toggle]])
-        local t = require("tint")
-        t.toggle()
-        t.toggle()
-      end,
-      { desc = "Toggle Explorer" })
 
     map('n', '<leader>gg', function()
         require("astronvim.utils").toggle_term_cmd "lazygit"
