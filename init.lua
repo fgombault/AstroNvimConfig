@@ -155,6 +155,7 @@ local config = {
     -- cmd+S can save, this needs a terminal (kitty) config to send ctrl-s
     -- note: normal mode shortcut already exists in vanilla astronvim
     map("i", "<C-s>", "<Esc>:w!<CR>i", { desc = "Save in insert mode" })
+    require("notify").setup({ background_colour = "#000000" })
   end
 }
 
