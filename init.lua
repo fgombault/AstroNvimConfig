@@ -75,7 +75,7 @@ local config = {
       end
     },
     {
-      'beauwilliams/focus.nvim',
+      'beauwilliams/focus.nvim', -- window management and resizing
       event = "BufReadPost",
       config = function()
         require("focus").setup({ hybridnumber = true })
