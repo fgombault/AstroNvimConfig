@@ -197,6 +197,9 @@ local config = {
         require("astronvim.utils").toggle_term_cmd "lazygit"
       end,
       { desc = "Toggle Lazygit" })
+
+    require("luasnip.loaders.from_vscode").lazy_load {
+      paths = { "./lua/user/vscode_snippets" } }
   end
 }
 
