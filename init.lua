@@ -84,9 +84,9 @@ local config = {
       end
     },
     {
-      "folke/todo-comments.nvim",                 -- highlight todos and move through them
+      "folke/todo-comments.nvim",                 -- highlight todos & jump
       event = "BufReadPost",
-      dependencies = { "nvim-lua/plenary.nvim" }, -- this also requires "brew install ripgrep"
+      dependencies = { "nvim-lua/plenary.nvim" }, -- + "brew install ripgrep"
       opts = {
         highlight = {
           throttle = 2000,
@@ -153,6 +153,7 @@ local config = {
 return config
 
 -- TODO: investigate snippet options
+-- https://www.youtube.com/playlist?list=PL0EgBggsoPCnZ3a6c0pZuQRMgS_Z8-Fnr
 -- TODO: linter
 -- TODO: signatures, https://github.com/ray-x/lsp_signature.nvim
 -- TODO: hover ? https://github.com/lewis6991/hover.nvim
