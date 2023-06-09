@@ -39,8 +39,8 @@ local config = {
       end,
     },
     {
-      'tpope/vim-sleuth', -- detect indentation style
-      event = "BufReadPost"
+      'tpope/vim-sleuth',      -- detect indentation style
+      event = "User Astrofile" -- for plugins related to "real files"
     },
     {
       'roxma/vim-paste-easy', -- paste without indent
@@ -74,7 +74,7 @@ local config = {
     },
     {
       'beauwilliams/focus.nvim', -- window management and resizing
-      event = "BufReadPost",
+      event = "WinLeave",
       opts = { hybridnumber = true },
       config = function()
         require('focus').setup({ hybridnumber = true })
@@ -82,7 +82,7 @@ local config = {
       end,
     },
     {
-      'ojroques/nvim-bufdel', -- low brain power buffer deletion
+      'ojroques/nvim-bufdel', -- no buffer deletion puzzles
       event = "BufReadPost",
       config = function()
         require('bufdel').setup()
@@ -93,7 +93,7 @@ local config = {
     },
     {
       'levouh/tint.nvim', -- unfocused windows are darker
-      event = "BufReadPost",
+      event = "WinLeave",
       config = function()
         require('tint').setup({
           tint = -65,
@@ -174,7 +174,7 @@ local config = {
     },
     {
       "romainl/vim-cool", -- prevent stale search highlighting
-      event = "User AstroFile",
+      event = "BufReadPost",
     }
     -- other plugins to consider
     -- emmet-vim, for expanding abbreviations (essential for web dev?)
