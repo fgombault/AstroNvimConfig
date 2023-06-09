@@ -4,7 +4,7 @@ Requires [Astronvim](https://astronvim.com), obviously.
 
 ## Screenshot
 
-![Nice looking IDE][screenshot.png "screenshot"]
+![Nice looking IDE](screenshot.png "screenshot")
 
 ## Features
 
