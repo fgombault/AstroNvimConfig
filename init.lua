@@ -69,7 +69,7 @@ local config = {
     },
     {
       'lukas-reineke/virt-column.nvim', -- discreet color column
-      event = "BufReadPost",
+      event = "BufEnter",
       opts = { char = '˙' },
     },
     {
