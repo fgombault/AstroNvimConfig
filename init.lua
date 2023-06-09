@@ -70,7 +70,7 @@ local config = {
     {
       'lukas-reineke/virt-column.nvim', -- discreet color column
       event = "BufEnter",
-      opts = { char = '˙' },
+      opts = { char = '.' },
     },
     {
       'beauwilliams/focus.nvim', -- window management and resizing
