@@ -13,5 +13,5 @@ Requires [Astronvim](https://astronvim.com), obviously.
 - Reasonable window management (focus, tint) and keyboard navigation (jump2d)
 - Support for Nim, lua(hammerspoon), fish, just
 - Codeium AI suggestions
-- TODO comment highlighting and navigation for code quality management
+- "TODO" comment highlighting and navigation for code quality management
 - etc.
