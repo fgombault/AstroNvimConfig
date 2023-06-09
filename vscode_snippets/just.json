@@ -2,6 +2,9 @@
   "template": {
     "prefix": "template",
     "body": [
+      "",
+      "# https://cheatography.com/linux-china/cheat-sheets/justfile/",
+      "",
       "alias tdd := watch",
       "",
       "build:",

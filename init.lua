@@ -195,8 +195,8 @@ local config = {
       end,
       { desc = "Toggle Lazygit" })
 
-    require("luasnip.loaders.from_vscode").lazy_load {
-      paths = { "./lua/user/vscode_snippets" } }
+    require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./lua/user/vscode_snippets" } })
+    require("luasnip").filetype_extend("just", { "sh" })
   end
 }
 
