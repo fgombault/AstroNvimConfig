@@ -11,7 +11,10 @@
       "  echo testing",
       "",
       "watch:",
-      "  ls | entr just test"],
+      "  ls | entr just test",
+      "",
+      "debt:",
+      "  git grep -EI 'TODO|FIXME'"],
   "description": "Template for a new project"
   }
 }
