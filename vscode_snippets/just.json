@@ -1,7 +1,17 @@
 {
   "template": {
     "prefix": "template",
-    "body": ["alias tdd := watch\n\nbuild:\n  echo build\n\ntest: build\n  echo testing\n\nwatch:\n  ls | entr just test"],
+    "body": [
+      "alias tdd := watch",
+      "",
+      "build:",
+      "  echo build",
+      "",
+      "test: build",
+      "  echo testing",
+      "",
+      "watch:",
+      "  ls | entr just test"],
   "description": "Template for a new project"
   }
 }
