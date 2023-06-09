@@ -8,7 +8,7 @@
       "  echo build",
       "",
       "test: build",
-      "  echo testing",
+      "  echo tests are KO ❌",
       "",
       "watch:",
       "  ls | entr just test",
