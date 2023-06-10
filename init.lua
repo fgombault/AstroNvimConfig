@@ -114,16 +114,22 @@ local config = {
       version = false,
       event = "BufReadPost",
       dependencies = { 'echasnovski/mini.nvim' },
-      opts = {
-        labels = "abcdefghiklmnopqrstuvwxy",
-        mappings = {
-          start_jumping = ',',
-        },
-        view = {
-          dim = true,
-          n_steps_ahead = 1,
-        },
-      },
+      config = function()
+        local jump = require("mini.jump2d")
+        local opts = {
+          spotter = jump.gen_pattern_spotter('[^%s%p]+'),
+          labels = "abcdefghiklmnopqrsuvwxy",
+          mappings = {
+            start_jumping = ',',
+          },
+          view = {
+            n_steps_ahead = 1,
+          },
+        }
+        jump.setup(opts)
+        vim.cmd([[hi MiniJump2dSpot guifg=#FFFFFF guibg=#DD2222]])
+        vim.cmd([[hi MiniJump2dSpotAhead guifg=#CCCCCC guibg=#AA2222]])
+      end,
     },
     {
       "folke/todo-comments.nvim",                 -- highlight todos & jump
@@ -192,7 +198,6 @@ local config = {
     -- fix some colors
     vim.cmd([[hi WinSeparator ctermbg=NONE guibg=NONE guifg=#AA0000]])
     vim.cmd([[hi CursorLine guibg=#401A11]])
-    vim.cmd([[hi MiniJump2dDim guifg=#444444]])
     require("notify").setup({ background_colour = "#000000" })
 
     map('n', '<leader>gg', function()
