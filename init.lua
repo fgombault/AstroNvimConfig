@@ -119,6 +119,9 @@ local config = {
         mappings = {
           start_jumping = ',',
         },
+        view = {
+          n_steps_ahead = 1,
+        },
       },
     },
     {
