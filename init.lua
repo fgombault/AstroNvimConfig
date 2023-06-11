@@ -74,7 +74,7 @@ local config = {
     },
     {
       'beauwilliams/focus.nvim', -- window management and resizing
-      event = "WinLeave",
+      event = "BuffEnter",
       opts = { hybridnumber = true },
       config = function()
         require('focus').setup({ hybridnumber = true })
