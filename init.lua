@@ -93,7 +93,7 @@ local config = {
     },
     {
       'levouh/tint.nvim', -- unfocused windows are darker
-      event = "WinLeave",
+      event = "BufReadPost",
       config = function()
         require('tint').setup({
           tint = -65,
