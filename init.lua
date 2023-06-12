@@ -127,8 +127,8 @@ local config = {
           },
         }
         jump.setup(opts)
-        vim.cmd([[hi MiniJump2dSpot guifg=#FFFFFF guibg=#DD2222]])
-        vim.cmd([[hi MiniJump2dSpotAhead guifg=#CCCCCC guibg=#AA2222]])
+        vim.cmd([[hi MiniJump2dSpot guifg=#FFFFEE guibg=#DD2222]])
+        vim.cmd([[hi MiniJump2dSpotAhead guifg=#FFFFEE guibg=#B52222]])
       end,
     },
     {
