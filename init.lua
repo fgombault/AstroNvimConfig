@@ -8,9 +8,10 @@ local config = {
       showtabline = 0,           -- tab line is clutter for my usage
     },
   },
-  icons = function(_, icons)
-    icons['FileModified'] = "💾"
-    return icons
+  icons = function()
+    local myicons = require("astronvim.icons.nerd_font")
+    myicons['FileModified'] = "💾"
+    return myicons
   end,
   diagnostics = {
     update_in_insert = false, -- this helps see codeium suggestions clearly
