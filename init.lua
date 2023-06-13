@@ -5,6 +5,7 @@ local config = {
     opt = {
       clipboard = 'unnamedplus', -- use the system clipboard
       colorcolumn = "80,100",
+      showtabline = 0,           -- tab line is clutter for my usage
     },
   },
   diagnostics = {
