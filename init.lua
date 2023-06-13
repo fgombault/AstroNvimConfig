@@ -8,6 +8,11 @@ local config = {
       showtabline = 0,           -- tab line is clutter for my usage
     },
   },
+  -- icons = require('icons'),
+  icons = function(_, icons)
+    icons['FileModified'] = "💾"
+    return icons
+  end,
   diagnostics = {
     update_in_insert = false, -- this helps see codeium suggestions clearly
   },
