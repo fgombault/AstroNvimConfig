@@ -42,7 +42,7 @@ local config = {
           status.component.mode { mode_text =
           { padding = { left = 1, right = 1 } } }, -- add the mode text
           status.component.git_branch(),
-          status.component.file_info(),            -- shows filename & modified status
+          status.component.file_info(),            -- filename & modified status
           status.component.git_diff(),
           status.component.diagnostics(),
           status.component.fill(),
