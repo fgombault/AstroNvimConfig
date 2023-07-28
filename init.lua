@@ -231,6 +231,8 @@ local config = {
     vim.cmd([[hi CursorLine guibg=#401A11]])
     require("notify").setup({ background_colour = "#000000" })
 
+    vim.cmd([[set wrap]])
+
     map('n', '<leader>gg', function()
         require("astronvim.utils").toggle_term_cmd "lazygit"
       end,
