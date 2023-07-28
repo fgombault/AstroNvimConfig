@@ -216,7 +216,7 @@ local config = {
     {
       "romainl/vim-cool", -- prevent stale search highlighting
       event = "BufReadPost",
-    }
+    },
     -- other plugins to consider
     -- emmet-vim, for expanding abbreviations (essential for web dev?)
   },
