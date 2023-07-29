@@ -237,7 +237,7 @@ local config = {
       "<cmd>s/$/ /<cr>" ..
       "o<esc><up>" ..
       "<cmd>.!toilet -f pagga<cr>" ..
-      "<cmd>lua require('Comment.api').toggle.count(3)<cr>" ..
+      "<cmd>lua require('Comment.api').toggle.linewise(3)<cr>" ..
       "<down><down><down>",
       { desc = "Comment banner" })
 
