@@ -236,7 +236,7 @@ local config = {
     map("n", "<leader>b", "<cmd>s/^ *//<cr>" ..
       "<cmd>s/$/ /<cr>" ..
       "o<esc><up>" ..
-      "<cmd>.!toilet -f pagga<cr>" ..
+      "<cmd>.!toilet -f pagga -w 77<cr>" ..
       "<cmd>lua require('Comment.api').toggle.linewise(3)<cr>" ..
       "<down><down><down>",
       { desc = "Comment banner" })
