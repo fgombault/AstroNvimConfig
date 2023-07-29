@@ -233,6 +233,12 @@ local config = {
 
     vim.cmd([[set wrap]])
 
+    map("n", "<leader>b", "<cmd>s/^ *//<cr>" ..
+      "<cmd>s/$/ /<cr>" ..
+      "<cmd>.!toilet -f pagga<cr>" ..
+      "<cmd>lua require('Comment.api').toggle.count(3)<cr>",
+      { desc = "Comment banner" })
+
     map('n', '<leader>gg', function()
         require("astronvim.utils").toggle_term_cmd "lazygit"
       end,
