@@ -31,6 +31,10 @@ local config = {
           { expr = true })
         vim.g.codeium_tab_fallback = '' -- don't insert a tab
         vim.g.codeium_idle_delay = 1000 -- avoid frantic suggestions
+        vim.cmd([[let g:codeium_filetypes = {
+    \ "nim": v:false,
+    \ "fish": v:false,
+    \ }]])
       end
     },
     {
@@ -87,7 +91,6 @@ local config = {
       'alaviss/nim.nvim', -- highlighting for nim
       ft = { 'nim' }
     },
-
     {
       'NoahTheDuke/vim-just', -- highlighting for just
       ft = { 'just' }
@@ -166,12 +169,16 @@ local config = {
       "folke/todo-comments.nvim",                 -- highlight todos & jump
       event = "BufReadPost",
       dependencies = { "nvim-lua/plenary.nvim" }, -- + "brew install ripgrep"
-      opts = {
-        highlight = {
+      opts = function(_, opts)
+        local td = require("todo-comments")
+        opts.highlight = {
           throttle = 2000,
           multiline = false,
+          comments_only = true,
+          pattern = { [[.*<(KEYWORDS)\s*:?]], },
         }
-      },
+        return opts
+      end,
     },
     {
       "folke/trouble.nvim",
