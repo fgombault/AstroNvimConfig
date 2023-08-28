@@ -253,6 +253,10 @@ local config = {
       end,
       { desc = "Toggle Lazygit" })
 
+    map('n', '<leader>tt',
+      "<cmd>TermExec size=10 direction=horizontal cmd='just tdd'<cr>",
+      { desc = "TDD" })
+
     require("luasnip.loaders.from_vscode").lazy_load(
       { paths = { "./lua/user/vscode_snippets" } })
     require("luasnip").filetype_extend("just", { "sh" })
