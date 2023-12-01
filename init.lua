@@ -16,6 +16,11 @@ local config = {
   diagnostics = {
     update_in_insert = false, -- this helps see codeium suggestions clearly
   },
+  lsp = {
+    formatting = {
+      format_on_save = false
+    }
+  },
   plugins = {
     {
       'Exafunction/codeium.vim',
