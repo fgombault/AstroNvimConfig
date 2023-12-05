@@ -77,8 +77,11 @@ local config = {
       end,
     },
     {
-      'tpope/vim-sleuth',      -- detect indentation style
-      event = "User Astrofile" -- for plugins related to "real files"
+      'tenxsoydev/tabs-vs-spaces.nvim',      -- detect indentation style
+      config = function()
+        require('tabs-vs-spaces').setup()
+      end,
+      event = "User Astrofile"     -- for plugins related to "real files"
     },
     {
       'roxma/vim-paste-easy', -- paste without indent
