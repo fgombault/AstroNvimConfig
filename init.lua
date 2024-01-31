@@ -232,6 +232,10 @@ local config = {
       "romainl/vim-cool", -- prevent stale search highlighting
       event = "BufReadPost",
     },
+    {
+      "tikhomirov/vim-glsl", -- gl shader language
+      event = "BufReadPost",
+    },
     -- other plugins to consider
     -- emmet-vim, for expanding abbreviations (essential for web dev?)
   },
@@ -260,6 +264,15 @@ local config = {
         require("astronvim.utils").toggle_term_cmd "lazygit"
       end,
       { desc = "Toggle Lazygit" })
+
+    vim.filetype.add(
+      {
+        extension = {
+          f = "glsl",
+          v = "glsl"
+        },
+      }
+    )
 
     map('n', '<leader>tt',
       "<cmd>TermExec size=10 direction=horizontal cmd='just tdd'<cr>",
