@@ -3,6 +3,7 @@
 return {
   {
   "olimorris/codecompanion.nvim",
+  event = "BufReadPost",
   config = true,
   dependencies = {
     "nvim-lua/plenary.nvim",
