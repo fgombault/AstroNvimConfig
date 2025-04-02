@@ -24,6 +24,41 @@ return {
     "rebelot/heirline.nvim",
     opts = function(_, opts)
       local status = require("astroui.status")
+      local codeCompanion = {
+        static = {
+          processing = false,
+          text = "",
+          fghl = "red",
+        },
+        update = {
+          "User",
+          pattern = "CodeCompanion*",
+          callback = function(self, args)
+            self.text = string.gsub(args.match, "CodeCompanion", "  󰯗 ")
+            if string.find(self.text, "Finished") or string.find(self.text, "Stopped") or string.find(self.text, "Closed") then
+              self.fghl = "cyan"
+            elseif string.find(self.text, "Started") or string.find(self.text, "Streaming") then
+              self.fghl = "red"
+            else
+              self.fghl = "yellow"
+            end
+
+            vim.cmd("redrawstatus")
+          end,
+        },
+        {
+          condition = function(self)
+            return true
+            -- return self.processing
+          end,
+          provider = function(self)
+            return self.text
+          end,
+          hl = function(self)
+            return { fg = self.fghl, }
+          end,
+        },
+      }
       opts.statusline = {
         hl = { fg = "fg", bg = "bg" },
         status.component.mode { mode_text =
@@ -37,6 +72,7 @@ return {
         status.component.fill(),
         status.component.lsp(),
         status.component.treesitter(),
+        codeCompanion,
         status.component.nav { scrollbar = false },
         -- removed right-side mode color block
       }
