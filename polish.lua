@@ -27,7 +27,7 @@ map("i", "<C-s>", "<Esc>:w!<CR>i", { desc = "Save in insert mode" })
 vim.cmd([[colorscheme dracula]])
 vim.cmd([[hi WinSeparator ctermbg=NONE guibg=NONE guifg=#AA0000]])
 vim.cmd([[hi CursorLine guibg=#401A11]])
-require("notify").setup({ background_colour = "#000000" })
+-- require("notify").setup({ background_colour = "#000000" }) -- WARN: The notify background has to be migrated to snack, maybe
 
 vim.cmd([[set wrap]])
 
