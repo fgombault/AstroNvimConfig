@@ -112,18 +112,6 @@ return {
     ft = { 'nim' }
   },
   {
-  'akinsho/flutter-tools.nvim',
-    config = function()
-      require("flutter-tools").setup {} -- use defaults
-    end,
-    -- lazy = false,
-    event = "BufReadPost",
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim', -- optional for vim.ui.select
-    },
-  },
-  {
     'NoahTheDuke/vim-just', -- highlighting for just
     ft = { 'just' }
   },
