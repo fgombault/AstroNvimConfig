@@ -42,8 +42,6 @@ return {
             else
               self.fghl = "yellow"
             end
-
-            vim.cmd("redrawstatus")
           end,
         },
         {
