@@ -107,7 +107,7 @@ return {
     event = "BufEnter",
     opts = { hybridnumber = true },
     config = function()
-      require('focus').setup({ hybridnumber = true })
+      require('focus').setup({ hybridnumber = true, autoresize = { enable = false } })
       map("n", "g,", ":FocusSplitCycle<CR>", { desc = "Cycle Focus" })
     end,
   },
