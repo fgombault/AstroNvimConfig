@@ -35,6 +35,9 @@ return {
         opts = { "algorithm:minimal", "filler", "vertical",  "iwhite", "linematch:60", "context:999999" },
         provider = "default", -- default|mini_diff
       },
+      chat = {
+        auto_scroll = false
+      },
     }
     opts.strategies = {
       chat = {
