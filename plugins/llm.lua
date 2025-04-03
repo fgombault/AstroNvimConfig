@@ -26,6 +26,16 @@ return {
         })
       end
     }
+    opts.display = {
+      diff = {
+        enabled = true,
+        close_chat_at = 240, -- Close an open chat buffer if the total columns of your display are less than...
+        layout = "vertical", -- vertical|horizontal split for default provider
+        -- opts = { "internal", "filler", "closeoff", "algorithm:patience", "followwrap", "linematch:120" },
+        opts = { "algorithm:minimal", "filler", "vertical",  "iwhite", "linematch:60", "context:999999" },
+        provider = "default", -- default|mini_diff
+      },
+    }
     opts.strategies = {
       chat = {
         -- Change the default chat adapter

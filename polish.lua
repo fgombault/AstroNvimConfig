@@ -30,6 +30,13 @@ vim.cmd([[hi CursorLine guibg=#401A11]])
 
 vim.cmd([[set wrap]])
 
+-- diff colors and presentation
+vim.cmd([[hi DiffChange guibg=#8A4F00 guifg=#DDDDDD]])
+vim.cmd([[hi DiffText guibg=#FF0000 guifg=FFFF00]])
+vim.cmd([[hi DiffDelete guifg=#606050]])
+vim.opt.diffopt = { "algorithm:minimal", "filler", "vertical",  "iwhite", "linematch:60", "context:99999" }
+vim.opt.fillchars = "diff:╳"
+
 map("n", "<leader>b", "<cmd>s/^ *//<cr>" ..
   "<cmd>s/$/ /<cr>" ..
   "o<esc><up>" ..
