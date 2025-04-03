@@ -39,11 +39,6 @@ map("n", "<leader>b", "<cmd>s/^ *//<cr>" ..
   "<down><down><down>",
   { desc = "Comment banner" })
 
-map('n', '<leader>gg', function()
-    require("astrocore").toggle_term_cmd "lazygit"
-  end,
-  { desc = "Toggle Lazygit" })
-
 vim.filetype.add(
   {
     extension = {
