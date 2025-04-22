@@ -20,7 +20,9 @@ return {
           },
           schema = {
             model = {
-              default = "anthropic/claude-3.7-sonnet",
+              -- default = "anthropic/claude-3.7-sonnet",
+              -- default = "openai/gpt-4.1", -- 2025-04-22 good for precise instruction following coding
+              default = "openai/o4-mini", -- 2025-04-22 good for cheap coding
             },
           },
         })
