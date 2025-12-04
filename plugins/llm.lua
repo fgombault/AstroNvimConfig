@@ -2,47 +2,32 @@
 
 return {
   {
-  "olimorris/codecompanion.nvim",
-  event = "BufReadPost",
-  config = true,
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
+    "NickvanDyke/opencode.nvim",
+    dependencies = {
+      -- Recommended for `ask()` and `select()`.
+      -- Required for `snacks` provider.
+      ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
+      { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
     },
-  opts = function(_, opts)
-    opts.adapters = {
-      openrouter = function()
-        return require("codecompanion.adapters").extend("openai_compatible", {
-          env = {
-            url = "https://openrouter.ai/api",
-            api_key = os.getenv("OPENROUTER_API_KEY"),
-            chat_url = "/v1/chat/completions",
-          },
-          schema = {
-            model = {
-              default = "anthropic/claude-3.7-sonnet",
-            },
-          },
-        })
-      end
-    }
-    opts.strategies = {
-      chat = {
-        -- Change the default chat adapter
-        adapter = "openrouter",
-        },
-      inline = {
-        adapter = "openrouter",
-        },
-      cmd = {
-        adapter = "openrouter",
-        },
+    config = function()
+      ---@type opencode.Opts
+      vim.g.opencode_opts = {
+        -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition".
       }
-    opts.opts = {
-      -- Set debug logging
-      log_level = "DEBUG",
-      }
-    return opts
+  
+      -- Required for `opts.events.reload`.
+      vim.o.autoread = true
+  
+      -- Recommended/example keymaps.
+      vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
+      vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,                          { desc = "Execute opencode action…" })
+      vim.keymap.set({ "n", "x" },    "ga", function() require("opencode").prompt("@this") end,                   { desc = "Add to opencode" })
+      vim.keymap.set({ "n", "t" }, "<C-.>", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
+      vim.keymap.set("n",        "<S-C-u>", function() require("opencode").command("session.half.page.up") end,   { desc = "opencode half page up" })
+      vim.keymap.set("n",        "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "opencode half page down" })
+      -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
+      vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment', noremap = true })
+      vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true })
     end,
   },
 }

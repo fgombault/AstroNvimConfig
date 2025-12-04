@@ -24,36 +24,47 @@ return {
     "rebelot/heirline.nvim",
     opts = function(_, opts)
       local status = require("astroui.status")
-      local codeCompanion = {
+      local opencode = {
         static = {
-          processing = false,
           text = "",
-          fghl = "red",
+          abbrev = "",
+          fghl = "gray",
         },
-        update = {
-          "User",
-          pattern = "CodeCompanion*",
-          callback = function(self, args)
-            self.text = string.gsub(args.match, "CodeCompanion", "  󰯗 ")
-            if string.find(self.text, "Finished") or string.find(self.text, "Stopped") or string.find(self.text, "Closed") then
-              self.fghl = "cyan"
-            elseif string.find(self.text, "Started") or string.find(self.text, "Streaming") then
-              self.fghl = "red"
-            else
-              self.fghl = "yellow"
-            end
-          end,
-        },
+         update = {
+           "User",
+           pattern = "OpencodeEvent:*",
+           callback = function(self, args)
+             local event = args.data.event
+             require("opencode.status").update(event)
+             self.text = require("opencode").statusline()
+             if self.text == "󰚩" then
+               self.abbrev = "IDL"
+               self.fghl = "cyan"
+             elseif self.text == "󱜙" then
+               self.abbrev = "RSP"
+               self.fghl = "red"
+             elseif self.text == "󱚟" then
+               self.abbrev = "PRM"
+               self.fghl = "yellow"
+             elseif self.text == "󱚡" then
+               self.abbrev = "ERR"
+               self.fghl = "red"
+              else
+                self.abbrev = "UNK"
+                self.fghl = "gray"
+              end
+              vim.cmd("redrawstatus")
+            end,
+         },
         {
           condition = function(self)
-            return true
-            -- return self.processing
+            return self.text ~= ""
           end,
           provider = function(self)
-            return self.text
+            return " " .. self.text .. " " .. self.abbrev .. " "
           end,
           hl = function(self)
-            return { fg = self.fghl, }
+            return { fg = self.fghl }
           end,
         },
       }
@@ -70,7 +81,7 @@ return {
         status.component.fill(),
         status.component.lsp(),
         status.component.treesitter(),
-        codeCompanion,
+        opencode,
         status.component.nav { scrollbar = false },
         -- removed right-side mode color block
       }
