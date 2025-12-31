@@ -37,11 +37,11 @@ vim.cmd([[hi DiffDelete guifg=#606050]])
 vim.opt.diffopt = { "algorithm:minimal", "filler", "vertical",  "iwhite", "linematch:60", "context:99999" }
 vim.opt.fillchars = "diff:╳"
 
-map("n", "<leader>b", "<cmd>s/^ *//<cr>" ..
+-- requires toilet command
+map("n", "<leader>z", "<cmd>s/^ *//<cr>" ..
   "<cmd>s/$/ /<cr>" ..
   "o<esc><up>" ..
   "<cmd>.!toilet -f pagga -w 77<cr>" ..
-  "<cmd>lua require('Comment.api').toggle.linewise(3)<cr>" ..
   "<down><down><down>",
   { desc = "Comment banner" })
 
