@@ -110,10 +110,10 @@ return {
     'roxma/vim-paste-easy', -- paste without indent
     event = "BufReadPost"
   },
-  {
-    'mechatroner/rainbow_csv',
-    ft = { 'csv' }
-  },
+  -- {
+  --   'mechatroner/rainbow_csv',
+  --   ft = { 'csv' }
+  -- },
   {
     'dag/vim-fish', -- highlighting for fish
     ft = { 'fish' }
